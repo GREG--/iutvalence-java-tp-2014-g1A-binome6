@@ -1,4 +1,4 @@
-
+/* TODO Javadoc */
 public class Jeux 
 {
 	private static final int PION_JOUEUR_1 = 1;
