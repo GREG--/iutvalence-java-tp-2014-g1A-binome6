@@ -1,8 +1,10 @@
 
 public class Application {
 
+
 	public static void main(String[] args) {
-		Jeux.tableau=new tableau; 
+		/* TODO Ce n'est pas du java ! */
+        Jeux.tableau=new tableau;
 	}
 
 }
