@@ -24,8 +24,8 @@ public class Puissance4
 	}
 	
 	public void jouer() {
-		/* Affiche */
-		/* Saisir */
+		/* Affiche mettre dans application*/
+		/* Saisir mettre dans application*/
 		/* Tenter de poser. */
 		/* Victoire ? */
 	}
