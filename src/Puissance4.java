@@ -1,18 +1,26 @@
 /* TODO Package. */
-/* TODO Javadoc. */
+
 /**
- * @Author : Blanc-Partula
+ * TODO.
+ *
+ * @author Blanc-Partula
+ * @version TODO
  */
 public class Puissance4 {
-	public Etat joueurCourant;
-	public Grille grille;
+	/** TODO. */
+    public Etat joueurCourant;
+	/* TODO Change en cours de partie ? */
+    /** TODO. */
+    public Grille grille;
 
+    /* TODO Inutile. */
 	public void Tour(Etat joueur) {
 		this.joueurCourant = joueur;
 		Grille.placerPion(colonne1); 
 	}
 
 	public void jouer() {
+        /* TODO Qu'est-ce que fait ce new Grille() ici ? */
 		System.out.println(new Grille());
 		/* Affiche mettre dans application */
 		/* Saisir mettre dans application */
