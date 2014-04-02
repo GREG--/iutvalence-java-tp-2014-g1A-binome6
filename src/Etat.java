@@ -1,9 +1,11 @@
 /* TODO Package. */
-/* TODO Javadoc. */
+
 /**
- * @Author : Blanc-Partula
+ * TODO.
+ * 
+ * @author Blanc-Partula
+ * @version TODO
  */
-public enum Etat 
-{
+public enum Etat {
 	VIDE, JOUEUR_1, JOUEUR_2
 }
