@@ -24,30 +24,31 @@ public class Grille {
 			for (int numeroDeColonne = 0; numeroDeColonne < Grille.NOMBRE_DE_COLONNES; numeroDeColonne++) {
 				this.cases[numeroDeLigne][numeroDeColonne] = Etat.VIDE;
 			}
-		}
+		}		
 	}
 
 	/** TODO. */
-	public void placerPion(int colonnePion) {
-		/* TODO Incohérent ! */
-		if (colonnePion > Grille.NOMBRE_DE_LIGNES) {
-			System.err
-					.println("Impossible de placer le pion, la colonne est pleine");
-		} else {
-			int i = 0;
-			/* TODO À implémenter au plus vite !!!! */
-			while (cases[i][colonnePion] = Etat.VIDE) {
-				if (cases[i][colonnePion] = Etat.VIDE) {
-					cases[i][colonnePion] = this.joueurCourant;
-				} else {
-					i++;
-				}
-			}
+	public void placerPion(int colonnePion, Etat joueurCourant) {
+		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
+			System.err.println("Erreur de saisie");
+			/* XXX INDIQUER LE PROBLEME */
+			return;
 		}
+
+		int i = NOMBRE_DE_LIGNES-1;
+		/* TODO À implémenter au plus vite !!!! */
+		do {	
+			if (cases[i][colonnePion] == Etat.VIDE) {
+				cases[i][colonnePion] = joueurCourant;
+				return;
+			} 
+			i--;			
+		}
+		while (i >= 0);
+			
+		/* XXX INDIQUER LE PROBLEME */
 	}
 
-	/* TODO Peut-être simplifié par un usage pertinent des "enum" */
-	/* TODO Mauvais comportement. Vous ne distinguez pas les joueurs. */
 	/**
 	 * Obtenir une représentation en ASCII-art de la grille.
 	 * <p/>
@@ -57,15 +58,13 @@ public class Grille {
 		String grillealpha = "";
 
 		for (int numeroDeLigne = 0; numeroDeLigne < Grille.NOMBRE_DE_LIGNES; numeroDeLigne++) {
+			grillealpha += '|';
 			for (int numeroDeColonne = 0; numeroDeColonne < Grille.NOMBRE_DE_COLONNES; numeroDeColonne++) {
-				if (this.cases[numeroDeLigne][numeroDeColonne] == Etat.VIDE) {
-					grillealpha += "O ";
-				} else {
-					grillealpha += "R ";
-				}
+				grillealpha += this.cases[numeroDeLigne][numeroDeColonne].toString();
 			}
-			grillealpha += "\n";
+			grillealpha += "|\n";
 		}
+		grillealpha += " -------\n 0123456";
 		return grillealpha;
 	}
 }

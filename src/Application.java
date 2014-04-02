@@ -2,18 +2,15 @@
 
 /**
  * TODO.
- *
+ * 
  * @author Blanc-Partula
  * @version TODO
  */
-
-
 public class Application {
 
-    /** TODO. */
+	/** TODO. */
 	public static void main(String[] args) {
-		Grille partie = new Grille();
+		Puissance4 partie = new Puissance4();
 		partie.jouer();
-
 	}
 }

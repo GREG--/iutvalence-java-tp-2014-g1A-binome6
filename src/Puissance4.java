@@ -13,17 +13,18 @@ public class Puissance4 {
 	/** TODO. */
 	public Grille grille;
 
-	/* TODO Inutile. */
-	public void Tour(Etat joueur) {
-		this.joueurCourant = joueur;
-		Grille.placerPion();
+	
+	public Puissance4() {
+		this.joueurCourant = Etat.JOUEUR_1;
+		this.grille = new Grille();
 	}
 
-	public void jouer() {
-		/* TODO Qu'est-ce que fait ce new Grille() ici ? */
-		System.out.println(new Grille());
 
-		/* Affiche mettre dans application */
+	public void jouer() {
+		System.out.println(grille);
+		/* Saisir */
+		/* Tenter de poser. */
+		/* Victoire. */
 		/* Saisir mettre dans application */
 		/* Tenter de poser. */
 		/* Victoire ? */

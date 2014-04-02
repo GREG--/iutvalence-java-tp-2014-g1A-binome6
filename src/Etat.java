@@ -7,5 +7,16 @@
  * @version TODO
  */
 public enum Etat {
-	VIDE, JOUEUR_1, JOUEUR_2
+	VIDE("."), JOUEUR_1("O"), JOUEUR_2("X");
+	
+	private final String representation;
+	
+	Etat(String repr) {
+		representation = repr;
+	}
+	
+	@Override
+	public String toString() {
+		return this.representation;
+	}
 }
