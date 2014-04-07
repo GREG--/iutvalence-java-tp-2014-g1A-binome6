@@ -61,10 +61,11 @@ public class Grille {
 			grillealpha += '|';
 			for (int numeroDeColonne = 0; numeroDeColonne < Grille.NOMBRE_DE_COLONNES; numeroDeColonne++) {
 				grillealpha += this.cases[numeroDeLigne][numeroDeColonne].toString();
+				grillealpha += '|';
 			}
-			grillealpha += "|\n";
+			grillealpha += "\n";
 		}
-		grillealpha += " -------\n 0123456";
+		grillealpha += " \n 0123456";
 		return grillealpha;
 	}
 }
