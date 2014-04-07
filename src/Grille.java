@@ -24,7 +24,7 @@ public class Grille {
 			for (int numeroDeColonne = 0; numeroDeColonne < Grille.NOMBRE_DE_COLONNES; numeroDeColonne++) {
 				this.cases[numeroDeLigne][numeroDeColonne] = Etat.VIDE;
 			}
-		}		
+		}
 	}
 
 	/** TODO. */
@@ -35,17 +35,16 @@ public class Grille {
 			return;
 		}
 
-		int i = NOMBRE_DE_LIGNES-1;
+		int i = NOMBRE_DE_LIGNES - 1;
 		/* TODO À implémenter au plus vite !!!! */
-		do {	
+		do {
 			if (cases[i][colonnePion] == Etat.VIDE) {
 				cases[i][colonnePion] = joueurCourant;
 				return;
-			} 
-			i--;			
-		}
-		while (i >= 0);
-			
+			}
+			i--;
+		} while (i >= 0);
+
 		/* XXX INDIQUER LE PROBLEME */
 	}
 
@@ -60,12 +59,17 @@ public class Grille {
 		for (int numeroDeLigne = 0; numeroDeLigne < Grille.NOMBRE_DE_LIGNES; numeroDeLigne++) {
 			grillealpha += '|';
 			for (int numeroDeColonne = 0; numeroDeColonne < Grille.NOMBRE_DE_COLONNES; numeroDeColonne++) {
-				grillealpha += this.cases[numeroDeLigne][numeroDeColonne].toString();
+				grillealpha += this.cases[numeroDeLigne][numeroDeColonne]
+						.toString();
 				grillealpha += '|';
 			}
 			grillealpha += "\n";
 		}
-		grillealpha += " \n 0123456";
+		grillealpha += " \n 0 1 2 3 4 5 6";
 		return grillealpha;
 	}
+
+	/*public void verifVictoire() {
+		if (cases[i][])	
+	}*/
 }
