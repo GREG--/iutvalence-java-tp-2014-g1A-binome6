@@ -23,11 +23,13 @@ public class Puissance4 {
 	public void jouer() {
 		int i = 0;
 		while (i <= 0) {
+
 			System.out.println("Veuillez saisir le numéro de colonne");
 			Scanner sc = new Scanner(System.in);
 			int numScan = sc.nextInt();
-			grille.placerPion(numScan, joueurCourant);
+			int numLigne = grille.placerPion(numScan, joueurCourant);
 			System.out.println(grille);
+			boolean victoire = grille.verifVictoire(numLigne, numScan, joueurCourant);
 			if (joueurCourant == Etat.JOUEUR_1) {
 				joueurCourant = Etat.JOUEUR_2;
 			} else {

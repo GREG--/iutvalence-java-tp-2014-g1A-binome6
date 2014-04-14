@@ -28,11 +28,11 @@ public class Grille {
 	}
 
 	/** TODO. */
-	public void placerPion(int colonnePion, Etat joueurCourant) {
+	public int placerPion(int colonnePion, Etat joueurCourant) {
 		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
 			System.err.println("Erreur de saisie");
 			/* XXX INDIQUER LE PROBLEME */
-			return;
+			return colonnePion;
 		}
 
 		int i = NOMBRE_DE_LIGNES - 1;
@@ -40,18 +40,17 @@ public class Grille {
 		do {
 			if (cases[i][colonnePion] == Etat.VIDE) {
 				cases[i][colonnePion] = joueurCourant;
-				return;
+				int numLigne = i;
+				return numLigne;
 			}
 			i--;
 		} while (i >= 0);
-
+		return -100;
 		/* XXX INDIQUER LE PROBLEME */
 	}
 
 	/**
-	 * Obtenir une représentation en ASCII-art de la grille.
-	 * <p/>
-	 * Les cases sont représentées par des O.
+	 * Obtenir une représentation en ASCII de la grille.
 	 */
 	public String toString() {
 		String grillealpha = "";
@@ -69,7 +68,49 @@ public class Grille {
 		return grillealpha;
 	}
 
-	/*public void verifVictoire() {
-		if (cases[i][])	
-	}*/
+	/* méthode de vérification à complétée */
+	public boolean verifVictoire(int lignePion, int colonnePion, Etat joueurCourant) {
+		int compteur = 0;
+		for (int i = 0; i < NOMBRE_DE_COLONNES; i++) {
+			if (cases[lignePion][i] == joueurCourant) {
+				compteur++;
+			}
+			else {
+				compteur = 0;
+			}
+			if (compteur == 4) {
+				return true;
+			}
+		}
+		
+		compteur = 0;
+		for (int i = 0; i < NOMBRE_DE_LIGNES; i++) {
+			if (cases[i][colonnePion] == joueurCourant) {
+				compteur++;
+			}
+			else {
+				compteur = 0;
+			}
+			if (compteur == 4) {
+				return true;
+			}
+		}
+		
+		compteur = 0;
+		for (int i = 0; i < NOMBRE_DE_LIGNES; i++) {
+			for (int j = 0; j < NOMBRE_DE_COLONNES; j++){
+				if (cases[i][j] == joueurCourant) {
+					compteur++;
+				}
+				else {
+					compteur = 0;
+				}
+				if (compteur == 4) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 }
