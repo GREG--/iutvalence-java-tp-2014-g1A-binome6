@@ -30,12 +30,16 @@ public class Puissance4 {
 			int numLigne = grille.placerPion(numScan, joueurCourant);
 			System.out.println(grille);
 			boolean victoire = grille.verifVictoire(numLigne, numScan, joueurCourant);
+			System.out.println(victoire);
 			if (joueurCourant == Etat.JOUEUR_1) {
 				joueurCourant = Etat.JOUEUR_2;
 			} else {
 				joueurCourant = Etat.JOUEUR_1;
 			}
 			i = i - 1;
+			if (victoire==true){
+				break;
+			}
 			/* Saisir */
 			/* Tenter de poser. */
 			/* Victoire. */
@@ -43,5 +47,6 @@ public class Puissance4 {
 			/* Tenter de poser. */
 			/* Victoire ? */
 		}
+		System.out.println("Bravo tu as gagné");
 	}
 }
