@@ -22,15 +22,19 @@ public class Interface implements Runnable {
 		//création d'un panneau que l'on placera à gauche
 		JPanel panneauGauche = new JPanel();
 		fenetre.getContentPane().add(panneauGauche);
-		fenetre.add(panneauGauche, BorderLayout.LINE_START);
+		fenetre.add(panneauGauche, BorderLayout.WEST);
 		panneauGauche.setBorder(BorderFactory.createLineBorder(Color.black));
-		panneauGauche.setSize(100, 50);
+		
+		//création d'un panneau que l'on placera au centre
+		JPanel panneauCentre = new JPanel();
+		fenetre.getContentPane().add(panneauGauche);
+		fenetre.add(panneauCentre, BorderLayout.CENTER);
+		panneauCentre.setBorder(BorderFactory.createLineBorder(Color.black));
 		
 		//création d'un panneau que l'on placera à droite
 		JPanel panneauDroit = new JPanel();
 		fenetre.getContentPane().add(panneauGauche);
-		fenetre.add(panneauDroit, BorderLayout.LINE_END);
+		fenetre.add(panneauDroit, BorderLayout.EAST);
 		panneauDroit.setBorder(BorderFactory.createLineBorder(Color.black));
-		
 	}
 }
