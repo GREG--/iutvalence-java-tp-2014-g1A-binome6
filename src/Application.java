@@ -1,3 +1,5 @@
+import javax.swing.SwingUtilities;
+
 /* TODO Package. */
 
 /**
@@ -10,6 +12,7 @@ public class Application {
 
 	/** TODO. */
 	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Interface());
 		Puissance4 partie = new Puissance4();
 		partie.jouer();
 	}
