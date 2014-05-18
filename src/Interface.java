@@ -4,7 +4,10 @@ import javax.swing.*;
 
 public class Interface implements Runnable {
 
-	public void run() {
+    public static void main(String...args)
+    {
+
+		
 		// création de la fenêtre principale
 		JFrame fenetre = new JFrame();
 
@@ -17,19 +20,30 @@ public class Interface implements Runnable {
 		JPanel ligneBouton = new JPanel();
 		JPanel tableau =new JPanel();
 
+		//
+        int w=5, h=5;
+        tableau.setLayout(new GridLayout(h,w));
+        
+        JButton[][] bouton = new JButton[h][w];
+        
+        for(int i=0; i<h; i++)
+        for(int j=0; j<w; j++)
+        {
+            tableau.add(bouton[i][j]=new JButton("case"+i+","+j));
+        	bouton[i][j].setEnabled(false);
+        }
+        	
 		// création d'un bouton
-		JButton bouton = new JButton("colonne 1");
+		//JButton bouton = new JButton("colonne 1");
 		JButton bouton1 = new JButton("colonne 2");
 		JButton bouton2 = new JButton("colonne 3");
 		JButton bouton3 = new JButton("colonne 4");
 		JButton bouton4 = new JButton("colonne 5");
 		JButton bouton5 = new JButton("colonne 6");
 		JButton bouton6 = new JButton("colonne 7");
-
-		//création d'un JTable
-		JTable puissance4 = new JTable();
 		
 		// réglage de la JFrame
+		fenetre.setResizable(false);
 		fenetre.setMinimumSize(new Dimension(800, 600));
 		fenetre.setMaximumSize(new Dimension(800, 600));
 		fenetre.setTitle("Puissance 4");
@@ -68,12 +82,15 @@ public class Interface implements Runnable {
 		panneauBas.setBackground(Color.darkGray);
 
 		// réglage de la grille
-		grille.add(ligneBouton);
-		grille.add(puissance4);
+		grille.setSize(new Dimension(650, 425));
+		grille.add(ligneBouton,BorderLayout.PAGE_START);
+		grille.add(tableau,BorderLayout.PAGE_END);
+		
+		//réglage du tableau
 
 		// réglage de la colonne
 		ligneBouton.setLayout(new BoxLayout(ligneBouton, BoxLayout.X_AXIS));
-		ligneBouton.add(bouton);
+		//ligneBouton.add(bouton);
 		ligneBouton.add(bouton1);
 		ligneBouton.add(bouton2);
 		ligneBouton.add(bouton3);
