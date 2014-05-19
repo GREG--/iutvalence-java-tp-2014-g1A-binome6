@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 /* TODO Package. */
 
 /**
@@ -7,14 +9,20 @@
  * @version TODO
  */
 public enum Etat {
-	VIDE("."), JOUEUR_1("O"), JOUEUR_2("X");
+	VIDE(".",Color.WHITE), JOUEUR_1("O",Color.YELLOW), JOUEUR_2("X", Color.RED);
 
 	private final String representation;
-
-	Etat(String repr) {
+	public Color couleur;
+	
+	Etat(String repr, Color couleur) {
 		representation = repr;
+		this.couleur = couleur;
 	}
 
+	public Color caseCouleur(){
+		return this.couleur;
+	}
+	
 	@Override
 	public String toString() {
 		return this.representation;

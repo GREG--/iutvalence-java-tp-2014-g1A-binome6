@@ -10,13 +10,13 @@ import java.util.Scanner;
 public class Puissance4 {
 	/** TODO. */
 
-	public Etat joueurCourant;
+	public static Etat joueurCourant;
 	/* TODO Change en cours de partie ? */
 	/** TODO. */
 	public Grille grille;
 
 	public Puissance4() {
-		this.joueurCourant = Etat.JOUEUR_1;
+		Puissance4.joueurCourant = Etat.JOUEUR_1;
 		this.grille = new Grille();
 	}
 
@@ -49,4 +49,13 @@ public class Puissance4 {
 		}
 		System.out.println("Bravo tu as gagné");
 	}
+
+	public static Etat getJoueurCourant() {
+		return joueurCourant;
+	}
+
+	public static void setJoueurCourant(Etat joueurCourant) {
+		Puissance4.joueurCourant = joueurCourant;
+	}
+	
 }
