@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Interface implements Runnable {
 
-    public static void main(String...args)
+    public void run()
     {   	
 		// création de la fenêtre principale
 		JFrame fenetre = new JFrame();
@@ -13,7 +13,7 @@ public class Interface implements Runnable {
 		JSplitPane panneauDroite = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		JPanel ligneBouton = new JPanel();
 		JPanel tableau =new JPanel();
-
+		
 		//
         tableau.setLayout(new GridLayout(Grille.NOMBRE_DE_LIGNES,Grille.NOMBRE_DE_COLONNES));
         
@@ -26,7 +26,8 @@ public class Interface implements Runnable {
         	bouton[i][j].setEnabled(false);
         	bouton[i][j].setBackground(Color.WHITE);
         }
-        	
+
+        
 		// création d'un bouton
         InterfaceGrille grille = new InterfaceGrille();
 		JButtonPlacerPion bouton1 = new JButtonPlacerPion(0,"colonne 1",grille);
@@ -43,7 +44,7 @@ public class Interface implements Runnable {
     	
 		// réglage de la JFrame
 		fenetre.setResizable(false);
-		fenetre.setSize(new Dimension(800, 600));
+		fenetre.setSize(new Dimension(630, 600));
 		fenetre.setTitle("Puissance 4");
 		fenetre.setVisible(true);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,6 +52,15 @@ public class Interface implements Runnable {
 		// réglage du panneau droite
 		fenetre.getContentPane().add(panneauDroite);
 		fenetre.add(panneauDroite);
+		// Désactivation de la séparation (elle restera figée)
+		panneauDroite.setEnabled(false);
+		// Désactivation de la bordure
+		panneauDroite.setBorder(null);
+		// Réduction de la taille du séparateur (il devient invisible)
+		panneauDroite.setDividerSize(0);
+		// Maximisation relative de la partie haute
+		// (la partie basse prend la place minimale)
+		panneauDroite.setResizeWeight(0.0);
 
 		// réglage de la colonne
 		ligneBouton.setLayout(new BoxLayout(ligneBouton, BoxLayout.X_AXIS));
@@ -63,9 +73,4 @@ public class Interface implements Runnable {
 		ligneBouton.add(bouton7);
 	}
 
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
 }

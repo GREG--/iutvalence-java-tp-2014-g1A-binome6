@@ -8,7 +8,7 @@ public class JButtonPlacerPion extends JButton implements ActionListener {
 	private String nomBoutton;
 	
 	public JButtonPlacerPion(int num,String nom,InterfaceGrille grille){
-		this.nomBoutton = nom;
+		super(nom);
 		this.colonneNum = num;
 		this.grille = grille;
 	}
