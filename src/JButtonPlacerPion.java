@@ -21,5 +21,6 @@ public class JButtonPlacerPion extends JButton implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		int ligne = grille.placerPion(colonneNum);
 		ihm.notifierChangement(ligne, colonneNum, grille.getPion());
+		
 	}
 }

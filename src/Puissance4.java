@@ -11,14 +11,11 @@ public class Puissance4 implements ControlePuissance4 {
 	/** TODO. */
 	
 	private VuePuissance4 vue;
-	
-	public Etat joueurCourant;
 
 	public Grille grille;
 
 	public Puissance4() {
 		this.vue = null;
-		this.joueurCourant = Etat.JOUEUR_1;
 		this.grille = grille;
 	}
 
@@ -34,15 +31,11 @@ public class Puissance4 implements ControlePuissance4 {
 			System.out.println("Veuillez saisir le numéro de colonne");
 			Scanner sc = new Scanner(System.in);
 			int numScan = sc.nextInt();
-			int numLigne = grille.placerPion(numScan, joueurCourant);
+			int numLigne = grille.placerPion(numScan);
 			System.out.println(grille);
-			boolean victoire = grille.verifVictoire(numLigne, numScan, joueurCourant);
+			boolean victoire = grille.verifVictoire(numLigne,numScan,grille.joueurCourant);
 			System.out.println(victoire);
-			if (joueurCourant == Etat.JOUEUR_1) {
-				joueurCourant = Etat.JOUEUR_2;
-			} else {
-				joueurCourant = Etat.JOUEUR_1;
-			}
+			grille.changerJoueurCourant();
 			i = i - 1;
 			if (victoire==true){
 				break;
@@ -50,13 +43,4 @@ public class Puissance4 implements ControlePuissance4 {
 		}
 		System.out.println("Bravo tu as gagné");
 	}
-
-	public Etat getJoueurCourant() {
-		return joueurCourant;
-	}
-
-	public void setJoueurCourant(Etat joueurCourant) {
-		this.joueurCourant = joueurCourant;
-	}
-	
 }

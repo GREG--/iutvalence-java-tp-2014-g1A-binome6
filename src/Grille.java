@@ -15,6 +15,16 @@ public class Grille {
 	/* TODO Change en cours de partie ? */
 	/** Les cases de la grille. */
 	private Etat[][] cases;
+	
+	public Etat joueurCourant;
+
+	public Etat getJoueurCourant() {
+		return joueurCourant;
+	}
+
+	public void setJoueurCourant(Etat joueurCourant) {
+		this.joueurCourant = joueurCourant;
+	}
 
 	/** Construire une nouvelle grille vide. */
 	public Grille() {
@@ -27,12 +37,9 @@ public class Grille {
 		}
 	}
 
-	public int placerPion(int colonne) {
-		
-	}
-	
 	/** TODO. */
-	public int placerPion(int colonnePion, Etat joueurCourant) {
+	public int placerPion(int colonnePion) {
+		this.joueurCourant = Etat.JOUEUR_1;
 		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
 			System.err.println("Erreur de saisie");
 			/* XXX INDIQUER LE PROBLEME */
@@ -267,5 +274,17 @@ public class Grille {
 		}
 		
 		return false;
+	}
+
+	public void changerJoueurCourant(){
+		if (this.joueurCourant == Etat.JOUEUR_1) {
+			this.joueurCourant = Etat.JOUEUR_2;
+		} else {
+			this.joueurCourant = Etat.JOUEUR_1;
+		}
+	}
+	
+	public Etat getPion() {
+		return joueurCourant;
 	}
 }
