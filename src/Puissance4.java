@@ -7,17 +7,24 @@ import java.util.Scanner;
  * @author Blanc-Partula
  * @version TODO
  */
-public class Puissance4 {
+public class Puissance4 implements ControlePuissance4 {
 	/** TODO. */
+	
+	private VuePuissance4 vue;
+	
+	public Etat joueurCourant;
 
-	public static Etat joueurCourant;
-	/* TODO Change en cours de partie ? */
-	/** TODO. */
 	public Grille grille;
 
 	public Puissance4() {
-		Puissance4.joueurCourant = Etat.JOUEUR_1;
-		this.grille = new Grille();
+		this.vue = null;
+		this.joueurCourant = Etat.JOUEUR_1;
+		this.grille = grille;
+	}
+
+	public void associerUneVue(VuePuissance4 vue)
+	{
+		this.vue = vue;
 	}
 
 	public void jouer() {
@@ -40,22 +47,16 @@ public class Puissance4 {
 			if (victoire==true){
 				break;
 			}
-			/* Saisir */
-			/* Tenter de poser. */
-			/* Victoire. */
-			/* Saisir mettre dans application */
-			/* Tenter de poser. */
-			/* Victoire ? */
 		}
 		System.out.println("Bravo tu as gagné");
 	}
 
-	public static Etat getJoueurCourant() {
+	public Etat getJoueurCourant() {
 		return joueurCourant;
 	}
 
-	public static void setJoueurCourant(Etat joueurCourant) {
-		Puissance4.joueurCourant = joueurCourant;
+	public void setJoueurCourant(Etat joueurCourant) {
+		this.joueurCourant = joueurCourant;
 	}
 	
 }

@@ -2,9 +2,15 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class Interface implements Runnable {
-
-    public void run()
+public class TacheDAffichagePuissance4 implements Runnable, VuePuissance4 {
+	private JButton[][] bouton;
+	private ControlePuissance4 controleur;
+	
+	public TacheDAffichagePuissance4(Puissance4 partie) {
+		// TODO Auto-generated constructor stub
+	}
+	
+    private void initialiserIHM()
     {   	
 		// création de la fenêtre principale
 		JFrame fenetre = new JFrame();
@@ -17,7 +23,7 @@ public class Interface implements Runnable {
 		//
         tableau.setLayout(new GridLayout(Grille.NOMBRE_DE_LIGNES,Grille.NOMBRE_DE_COLONNES));
         
-        JButton[][] bouton = new JButton[Grille.NOMBRE_DE_LIGNES][Grille.NOMBRE_DE_COLONNES];
+        bouton = new JButton[Grille.NOMBRE_DE_LIGNES][Grille.NOMBRE_DE_COLONNES];
         
         for(int i=0; i<Grille.NOMBRE_DE_LIGNES; i++)
         for(int j=0; j<Grille.NOMBRE_DE_COLONNES; j++)
@@ -29,14 +35,14 @@ public class Interface implements Runnable {
 
         
 		// création d'un bouton
-        InterfaceGrille grille = new InterfaceGrille();
-		JButtonPlacerPion bouton1 = new JButtonPlacerPion(0,"colonne 1",grille);
-		JButtonPlacerPion bouton2 = new JButtonPlacerPion(1,"colonne 2",grille);
-		JButtonPlacerPion bouton3 = new JButtonPlacerPion(2,"colonne 3",grille);
-		JButtonPlacerPion bouton4 = new JButtonPlacerPion(3,"colonne 4",grille);
-		JButtonPlacerPion bouton5 = new JButtonPlacerPion(4,"colonne 5",grille);
-		JButtonPlacerPion bouton6 = new JButtonPlacerPion(5,"colonne 6",grille);
-		JButtonPlacerPion bouton7 = new JButtonPlacerPion(6,"colonne 7",grille);
+        Grille grille = new Grille();
+		JButtonPlacerPion bouton1 = new JButtonPlacerPion(0,"colonne 1",grille,this);
+		JButtonPlacerPion bouton2 = new JButtonPlacerPion(1,"colonne 2",grille,this);
+		JButtonPlacerPion bouton3 = new JButtonPlacerPion(2,"colonne 3",grille,this);
+		JButtonPlacerPion bouton4 = new JButtonPlacerPion(3,"colonne 4",grille,this);
+		JButtonPlacerPion bouton5 = new JButtonPlacerPion(4,"colonne 5",grille,this);
+		JButtonPlacerPion bouton6 = new JButtonPlacerPion(5,"colonne 6",grille,this);
+		JButtonPlacerPion bouton7 = new JButtonPlacerPion(6,"colonne 7",grille,this);
 		
 		//création et réglage du panel 
     	panneauDroite.add(ligneBouton);
@@ -71,6 +77,16 @@ public class Interface implements Runnable {
 		ligneBouton.add(bouton5);
 		ligneBouton.add(bouton6);
 		ligneBouton.add(bouton7);
+	}    
+    
+    @Override
+    public void run(){
+    	initialiserIHM();
+    }
+
+	@Override
+	public void notifierChangement(int ligne, int colonne, Etat pion) {
+		bouton[ligne][colonne].setBackground(pion.caseCouleur());
 	}
 
 }

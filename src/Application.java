@@ -12,8 +12,12 @@ public class Application {
 
 	/** TODO. */
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Interface());
+		
 		Puissance4 partie = new Puissance4();
+		TacheDAffichagePuissance4 affichage = new TacheDAffichagePuissance4(partie);
+		partie.associerUneVue(affichage);
+		SwingUtilities.invokeLater(affichage);
+
 		partie.jouer();
 	}
 }

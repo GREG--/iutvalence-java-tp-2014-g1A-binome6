@@ -27,6 +27,10 @@ public class Grille {
 		}
 	}
 
+	public int placerPion(int colonne) {
+		
+	}
+	
 	/** TODO. */
 	public int placerPion(int colonnePion, Etat joueurCourant) {
 		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
