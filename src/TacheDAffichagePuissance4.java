@@ -85,8 +85,13 @@ public class TacheDAffichagePuissance4 implements Runnable, VuePuissance4 {
     }
 
 	@Override
-	public void notifierChangement(int ligne, int colonne, Etat pion) {
-		bouton[ligne][colonne].setBackground(pion.caseCouleur());
+	public void victoire() {
+			
+	}
+
+	@Override
+	public void placerPionIHM(int ligne, int colonne, Etat pion) {
+		bouton[ligne][colonne].setBackground(pion.caseCouleur());	
 	}
 
 }

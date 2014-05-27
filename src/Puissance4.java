@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Blanc-Partula
  * @version TODO
  */
-public class Puissance4 implements ControlePuissance4 {
+public class Puissance4{
 	/** TODO. */
 	
 	private VuePuissance4 vue;

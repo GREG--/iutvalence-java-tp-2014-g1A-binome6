@@ -6,14 +6,21 @@
  * @author Blanc-Partula
  * @version TODO
  */
-public class Grille {
-	/** Le nombre de cases par ligne. */
+public class Grille implements ControlePuissance4{
+	/**
+	 *  Le nombre de cases par ligne. 
+	 */
 	public static final int NOMBRE_DE_LIGNES = 6;
-	/** Le nombre de cases par colonne. */
+	
+	/**
+	 *  Le nombre de cases par colonne. 
+	 */
 	public static final int NOMBRE_DE_COLONNES = 7;
 
-	/* TODO Change en cours de partie ? */
-	/** Les cases de la grille. */
+
+	/** 
+	 * Les cases de la grille. 
+	 */
 	private Etat[][] cases;
 	
 	public Etat joueurCourant;
@@ -26,7 +33,9 @@ public class Grille {
 		this.joueurCourant = joueurCourant;
 	}
 
-	/** Construire une nouvelle grille vide. */
+	/**
+	 *  Construire une nouvelle grille vide. 
+	 */
 	public Grille() {
 		this.cases = new Etat[Grille.NOMBRE_DE_LIGNES][Grille.NOMBRE_DE_COLONNES];
 
@@ -37,17 +46,16 @@ public class Grille {
 		}
 	}
 
-	/** TODO. */
+	
 	public int placerPion(int colonnePion) {
 		this.joueurCourant = Etat.JOUEUR_1;
 		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
 			System.err.println("Erreur de saisie");
-			/* XXX INDIQUER LE PROBLEME */
 			return colonnePion;
 		}
 
 		int i = NOMBRE_DE_LIGNES - 1;
-		/* TODO � impl�menter au plus vite !!!! */
+		
 		do {
 			if (cases[i][colonnePion] == Etat.VIDE) {
 				cases[i][colonnePion] = joueurCourant;
@@ -57,7 +65,7 @@ public class Grille {
 			i--;
 		} while (i >= 0);
 		return -100;
-		/* XXX INDIQUER LE PROBLEME */
+
 	}
 
 	/**
@@ -79,7 +87,9 @@ public class Grille {
 		return grillealpha;
 	}
 
-	/** m�thode de v�rification du puissance 4 */
+	/**
+	 *  m�thode de v�rification du puissance 4
+	 */
 	public boolean verifVictoire(int lignePion, int colonnePion,
 			Etat joueurCourant) {
 

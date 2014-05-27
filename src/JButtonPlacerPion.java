@@ -5,9 +5,13 @@ import javax.swing.JButton;
 
 
 public class JButtonPlacerPion extends JButton implements ActionListener {
+	
 	private Grille grille;
+	
 	private VuePuissance4 ihm;
+	
 	private int colonneNum;
+	
 	private String nomBoutton;
 	
 	public JButtonPlacerPion(int num,String nom, Grille grille,VuePuissance4 ihm){
@@ -21,6 +25,5 @@ public class JButtonPlacerPion extends JButton implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		int ligne = grille.placerPion(colonneNum);
 		ihm.notifierChangement(ligne, colonneNum, grille.getPion());
-		
 	}
 }
