@@ -8,22 +8,32 @@ public class JButtonPlacerPion extends JButton implements ActionListener {
 	
 	private Grille grille;
 	
-	private VuePuissance4 ihm;
-	
-	private int colonneNum;
+	private final int colonneNum;
 	
 	private String nomBoutton;
 	
-	public JButtonPlacerPion(int num,String nom, Grille grille,VuePuissance4 ihm){
+	private ControlePuissance4 controleur;
+	
+	public JButtonPlacerPion(int num,String nom, Grille grille, ControlePuissance4 controleur){
 		super(nom);
+		this.controleur = controleur;
 		this.colonneNum = num;
 		this.grille = grille;
-		this.ihm = ihm;
+		this.addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		int ligne = grille.placerPion(colonneNum);
-		ihm.notifierChangement(ligne, colonneNum, grille.getPion());
+		this.controleur.placerPion(ligne, colonneNum, grille.getJoueurCourant());
+		
+		if (ligne == -100) {
+			//traitement à faire 
+			}
+			else {
+			controleur.placerPion(ligne,colonneNum,grille.getJoueurCourant());
+			controleur.changerDeJoueur(grille.getJoueurCourant());
+
+			}
 	}
 }

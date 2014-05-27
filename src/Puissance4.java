@@ -10,18 +10,10 @@ import java.util.Scanner;
 public class Puissance4{
 	/** TODO. */
 	
-	private VuePuissance4 vue;
-
 	public Grille grille;
 
 	public Puissance4() {
-		this.vue = null;
 		this.grille = grille;
-	}
-
-	public void associerUneVue(VuePuissance4 vue)
-	{
-		this.vue = vue;
 	}
 
 	public void jouer() {

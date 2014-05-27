@@ -6,7 +6,7 @@
  * @author Blanc-Partula
  * @version TODO
  */
-public class Grille implements ControlePuissance4{
+public class Grille{
 	/**
 	 *  Le nombre de cases par ligne. 
 	 */
@@ -17,7 +17,7 @@ public class Grille implements ControlePuissance4{
 	 */
 	public static final int NOMBRE_DE_COLONNES = 7;
 
-
+	private static final Etat joueurParDefaut = Etat.JOUEUR_1;
 	/** 
 	 * Les cases de la grille. 
 	 */
@@ -26,7 +26,7 @@ public class Grille implements ControlePuissance4{
 	public Etat joueurCourant;
 
 	public Etat getJoueurCourant() {
-		return joueurCourant;
+		return this.joueurCourant;
 	}
 
 	public void setJoueurCourant(Etat joueurCourant) {
@@ -38,7 +38,7 @@ public class Grille implements ControlePuissance4{
 	 */
 	public Grille() {
 		this.cases = new Etat[Grille.NOMBRE_DE_LIGNES][Grille.NOMBRE_DE_COLONNES];
-
+		this.joueurCourant=joueurParDefaut;
 		for (int numeroDeLigne = 0; numeroDeLigne < Grille.NOMBRE_DE_LIGNES; numeroDeLigne++) {
 			for (int numeroDeColonne = 0; numeroDeColonne < Grille.NOMBRE_DE_COLONNES; numeroDeColonne++) {
 				this.cases[numeroDeLigne][numeroDeColonne] = Etat.VIDE;
@@ -46,19 +46,17 @@ public class Grille implements ControlePuissance4{
 		}
 	}
 
-	
-	public int placerPion(int colonnePion) {
-		this.joueurCourant = Etat.JOUEUR_1;
-		if (colonnePion > Grille.NOMBRE_DE_LIGNES || colonnePion < 0) {
+	public int placerPion(int colonneNum) {
+		if (colonneNum > Grille.NOMBRE_DE_LIGNES || colonneNum < 0) {
 			System.err.println("Erreur de saisie");
-			return colonnePion;
+			return colonneNum;
 		}
 
 		int i = NOMBRE_DE_LIGNES - 1;
 		
 		do {
-			if (cases[i][colonnePion] == Etat.VIDE) {
-				cases[i][colonnePion] = joueurCourant;
+			if (cases[i][colonneNum] == Etat.VIDE) {
+				cases[i][colonneNum] = joueurCourant;
 				int numLigne = i;
 				return numLigne;
 			}

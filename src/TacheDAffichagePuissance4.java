@@ -2,11 +2,11 @@ import java.awt.*;
 
 import javax.swing.*;
 
-public class TacheDAffichagePuissance4 implements Runnable, VuePuissance4 {
+public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 	private JButton[][] bouton;
-	private ControlePuissance4 controleur;
+    private Grille grille = new Grille();
 	
-	public TacheDAffichagePuissance4(Puissance4 partie) {
+	public TacheDAffichagePuissance4() {
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -35,14 +35,13 @@ public class TacheDAffichagePuissance4 implements Runnable, VuePuissance4 {
 
         
 		// création d'un bouton
-        Grille grille = new Grille();
-		JButtonPlacerPion bouton1 = new JButtonPlacerPion(0,"colonne 1",grille,this);
-		JButtonPlacerPion bouton2 = new JButtonPlacerPion(1,"colonne 2",grille,this);
-		JButtonPlacerPion bouton3 = new JButtonPlacerPion(2,"colonne 3",grille,this);
-		JButtonPlacerPion bouton4 = new JButtonPlacerPion(3,"colonne 4",grille,this);
-		JButtonPlacerPion bouton5 = new JButtonPlacerPion(4,"colonne 5",grille,this);
-		JButtonPlacerPion bouton6 = new JButtonPlacerPion(5,"colonne 6",grille,this);
-		JButtonPlacerPion bouton7 = new JButtonPlacerPion(6,"colonne 7",grille,this);
+		JButtonPlacerPion bouton1 = new JButtonPlacerPion(0,"colonne 1", grille, this);
+		JButtonPlacerPion bouton2 = new JButtonPlacerPion(1,"colonne 2", grille, this);
+		JButtonPlacerPion bouton3 = new JButtonPlacerPion(2,"colonne 3", grille, this);
+		JButtonPlacerPion bouton4 = new JButtonPlacerPion(3,"colonne 4", grille, this);
+		JButtonPlacerPion bouton5 = new JButtonPlacerPion(4,"colonne 5", grille, this);
+		JButtonPlacerPion bouton6 = new JButtonPlacerPion(5,"colonne 6", grille, this);
+		JButtonPlacerPion bouton7 = new JButtonPlacerPion(6,"colonne 7", grille, this);
 		
 		//création et réglage du panel 
     	panneauDroite.add(ligneBouton);
@@ -85,13 +84,18 @@ public class TacheDAffichagePuissance4 implements Runnable, VuePuissance4 {
     }
 
 	@Override
-	public void victoire() {
-			
+	public void placerPion(int ligneNum, int colonneNum, Etat pion) {
+		this.bouton[ligneNum][colonneNum].setBackground(pion.caseCouleur());
 	}
 
 	@Override
-	public void placerPionIHM(int ligne, int colonne, Etat pion) {
-		bouton[ligne][colonne].setBackground(pion.caseCouleur());	
+	public void changerDeJoueur(Etat joueur) {
+		if(joueur==Etat.JOUEUR_1){
+			grille.joueurCourant = Etat.JOUEUR_1;
+		}else
+		{
+			grille.joueurCourant = Etat.JOUEUR_2;
+		}
 	}
 
 }
