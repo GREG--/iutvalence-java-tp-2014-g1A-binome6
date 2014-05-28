@@ -32,8 +32,10 @@ public class JButtonPlacerPion extends JButton implements ActionListener {
 			}
 			else {
 			controleur.placerPion(ligne,colonneNum,grille.getJoueurCourant());
+			if (grille.verifVictoire(ligne, colonneNum, grille.getJoueurCourant())==true){
+				controleur.victoire();
+			}
 			controleur.changerDeJoueur(grille.getJoueurCourant());
-
 			}
 	}
 }

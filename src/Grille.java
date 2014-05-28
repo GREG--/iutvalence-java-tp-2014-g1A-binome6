@@ -26,7 +26,7 @@ public class Grille{
 	public Etat joueurCourant;
 
 	public Etat getJoueurCourant() {
-		return this.joueurCourant;
+		return joueurCourant;
 	}
 
 	public void setJoueurCourant(Etat joueurCourant) {

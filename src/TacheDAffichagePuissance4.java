@@ -5,15 +5,30 @@ import javax.swing.*;
 public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 	private JButton[][] bouton;
     private Grille grille = new Grille();
+	private JFrame fenetre = new JFrame();
+	private JFrame nomJoueur = new JFrame();
 	
 	public TacheDAffichagePuissance4() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	private void reglageJoueur(){
+		JTextField joueur1 = new JTextField();
+		JTextField joueur2 = new JTextField();
+		
+		joueur1.setSize(new Dimension (20,100));
+		joueur1.setBorder(BorderFactory.createLineBorder(Color.black));;
+		
+		nomJoueur.setResizable(false);
+		nomJoueur.setSize(new Dimension(630, 600));
+		nomJoueur.setTitle("Puissance 4");
+		nomJoueur.setVisible(true);
+		nomJoueur.add(joueur1);
+		nomJoueur.add(joueur2);
+	}
+	
     private void initialiserIHM()
     {   	
-		// création de la fenêtre principale
-		JFrame fenetre = new JFrame();
 
 		// création des JPanel
 		JSplitPane panneauDroite = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -76,10 +91,11 @@ public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 		ligneBouton.add(bouton5);
 		ligneBouton.add(bouton6);
 		ligneBouton.add(bouton7);
-	}    
+	}   
     
     @Override
     public void run(){
+    	reglageJoueur();
     	initialiserIHM();
     }
 
@@ -89,13 +105,33 @@ public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 	}
 
 	@Override
-	public void changerDeJoueur(Etat joueur) {
-		if(joueur==Etat.JOUEUR_1){
-			grille.joueurCourant = Etat.JOUEUR_1;
-		}else
+	public void changerDeJoueur(Etat joueur) 
 		{
-			grille.joueurCourant = Etat.JOUEUR_2;
+		if(joueur==Etat.JOUEUR_1){
+			grille.setJoueurCourant(Etat.JOUEUR_2);
+		}
+		else
+		{
+			grille.setJoueurCourant(Etat.JOUEUR_1);
 		}
 	}
+
+	@Override
+	public void victoire() {
+		// TODO Auto-generated method stub
+		int rejouer = JOptionPane.showConfirmDialog(fenetre, "Felicitation "+grille.getJoueurCourant()+", vous avez gagné! \nVoulez vous rejouer ?", "Félicitation !", JOptionPane.YES_NO_OPTION);
+		if (rejouer== JOptionPane.OK_OPTION)
+		{
+		fenetre.dispose();
+		Application.main(null);
+
+		}
+
+		else
+		{
+		fenetre.dispose();	
+		}
+	}
+	
 
 }
