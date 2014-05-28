@@ -6,5 +6,9 @@ public interface ControlePuissance4 {
 	public void changerDeJoueur (Etat joueur);
 	
 	public void victoire();
+
+	public void matchNul();
+
+	public void fatalError();
 	
 }

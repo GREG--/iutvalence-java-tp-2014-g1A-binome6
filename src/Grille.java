@@ -295,4 +295,19 @@ public class Grille{
 	public Etat getPion() {
 		return joueurCourant;
 	}
+
+	public boolean estPleine() {
+		int compteur = 0;
+		for (int i = 0; i < NOMBRE_DE_COLONNES; i++) {
+			if (cases[0][i] !=Etat.VIDE) {
+				compteur++;
+			} else {
+				compteur = 0;
+			}
+			if (compteur == 7) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

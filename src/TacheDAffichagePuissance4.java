@@ -6,35 +6,23 @@ public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 	private JButton[][] bouton;
     private Grille grille = new Grille();
 	private JFrame fenetre = new JFrame();
-	private JFrame nomJoueur = new JFrame();
+	private JLabel etiquette = new JLabel();
 	
 	public TacheDAffichagePuissance4() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	private void reglageJoueur(){
-		JTextField joueur1 = new JTextField();
-		JTextField joueur2 = new JTextField();
-		
-		joueur1.setSize(new Dimension (20,100));
-		joueur1.setBorder(BorderFactory.createLineBorder(Color.black));;
-		
-		nomJoueur.setResizable(false);
-		nomJoueur.setSize(new Dimension(630, 600));
-		nomJoueur.setTitle("Puissance 4");
-		nomJoueur.setVisible(true);
-		nomJoueur.add(joueur1);
-		nomJoueur.add(joueur2);
-	}
-	
     private void initialiserIHM()
-    {   	
-
+    {
 		// création des JPanel
-		JSplitPane panneauDroite = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+    	JSplitPane panneauJoueur = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		JSplitPane panneauGrille = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		JPanel ligneBouton = new JPanel();
 		JPanel tableau =new JPanel();
 		
+		etiquette.setBackground(Etat.JOUEUR_1.caseCouleur());
+		etiquette.setText(Etat.JOUEUR_1.toString());
+		etiquette.setOpaque(true);
 		//
         tableau.setLayout(new GridLayout(Grille.NOMBRE_DE_LIGNES,Grille.NOMBRE_DE_COLONNES));
         
@@ -58,29 +46,35 @@ public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 		JButtonPlacerPion bouton6 = new JButtonPlacerPion(5,"colonne 6", grille, this);
 		JButtonPlacerPion bouton7 = new JButtonPlacerPion(6,"colonne 7", grille, this);
 		
+		panneauJoueur.add(etiquette);
+		panneauJoueur.add(panneauGrille);
+		panneauJoueur.setEnabled(false);
+		panneauJoueur.setBorder(null);
+		panneauJoueur.setDividerSize(0);
+		panneauJoueur.setResizeWeight(0.0);
 		//création et réglage du panel 
-    	panneauDroite.add(ligneBouton);
-    	panneauDroite.add(tableau);
+    	panneauGrille.add(ligneBouton);
+    	panneauGrille.add(tableau);
     	
 		// réglage de la JFrame
 		fenetre.setResizable(false);
-		fenetre.setSize(new Dimension(630, 600));
+		fenetre.setSize(new Dimension(630, 700));
 		fenetre.setTitle("Puissance 4");
 		fenetre.setVisible(true);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// réglage du panneau droite
-		fenetre.getContentPane().add(panneauDroite);
-		fenetre.add(panneauDroite);
+		fenetre.getContentPane().add(panneauJoueur);
+		fenetre.add(panneauJoueur);
 		// Désactivation de la séparation (elle restera figée)
-		panneauDroite.setEnabled(false);
+		panneauGrille.setEnabled(false);
 		// Désactivation de la bordure
-		panneauDroite.setBorder(null);
+		panneauGrille.setBorder(null);
 		// Réduction de la taille du séparateur (il devient invisible)
-		panneauDroite.setDividerSize(0);
+		panneauGrille.setDividerSize(0);
 		// Maximisation relative de la partie haute
 		// (la partie basse prend la place minimale)
-		panneauDroite.setResizeWeight(0.0);
+		panneauGrille.setResizeWeight(0.0);
 
 		// réglage de la colonne
 		ligneBouton.setLayout(new BoxLayout(ligneBouton, BoxLayout.X_AXIS));
@@ -95,7 +89,6 @@ public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
     
     @Override
     public void run(){
-    	reglageJoueur();
     	initialiserIHM();
     }
 
@@ -109,10 +102,14 @@ public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 		{
 		if(joueur==Etat.JOUEUR_1){
 			grille.setJoueurCourant(Etat.JOUEUR_2);
+			etiquette.setBackground(Etat.JOUEUR_2.caseCouleur());
+			etiquette.setText(Etat.JOUEUR_2.toString());
 		}
 		else
 		{
 			grille.setJoueurCourant(Etat.JOUEUR_1);
+			etiquette.setBackground(Etat.JOUEUR_1.caseCouleur());
+			etiquette.setText(Etat.JOUEUR_1.toString());
 		}
 	}
 
@@ -131,6 +128,28 @@ public class TacheDAffichagePuissance4 implements Runnable, ControlePuissance4 {
 		{
 		fenetre.dispose();	
 		}
+	}
+
+	@Override
+	public void matchNul() {
+		int rejouer = JOptionPane.showConfirmDialog(fenetre, "Vous avez bien joué, mais vous avez fait match nuls \nVoulez vous rejouer ?", "Match Nul", JOptionPane.YES_NO_OPTION);
+		if (rejouer== JOptionPane.OK_OPTION)
+		{
+		fenetre.dispose();
+		Application.main(null);
+
+		}
+
+		else
+		{
+		fenetre.dispose();	
+		}
+	}
+
+	@Override
+	public void fatalError() {
+		fenetre.dispose();
+		
 	}
 	
 

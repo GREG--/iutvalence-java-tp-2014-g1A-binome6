@@ -13,7 +13,7 @@ public class Puissance4{
 	public Grille grille;
 
 	public Puissance4() {
-		this.grille = grille;
+		//this.grille = grille;
 	}
 
 	public void jouer() {

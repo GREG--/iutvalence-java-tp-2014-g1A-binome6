@@ -11,11 +11,11 @@ import java.awt.Color;
 public enum Etat {
 	VIDE(".",Color.WHITE), JOUEUR_1("Joueur jaune",Color.YELLOW), JOUEUR_2("Joueur rouge", Color.RED);
 
-	private final String representation;
+	private final String nom;
 	public Color couleur;
 	
-	Etat(String repr, Color couleur) {
-		representation = repr;
+	Etat(String nom, Color couleur) {
+		this.nom = nom;
 		this.couleur = couleur;
 	}
 
@@ -23,8 +23,8 @@ public enum Etat {
 		return this.couleur;
 	}
 	
-	@Override
-	public String toString() {
-		return this.representation;
+	public String toString(){
+		return nom;
+		
 	}
 }
